@@ -1,7 +1,8 @@
 const express = require('express');
 const https = require('https');
 const fs = require('fs');
-const startup = require('./routes/startup');
+// const startup = require('./routes/startup');
+const { alive, startup, device_info, user } = require('./routes');
 
 const app = express();
 
@@ -14,6 +15,9 @@ const server = https.createServer(httpsOptions, app);
 
 app.use(express.json());
 app.use('/', startup);
+app.use('/alive', alive);
+app.use('/device_info', device_info);
+app.use('user', user);
 
 // GET Route with custom headers
 
@@ -49,16 +53,10 @@ app.get('/set-header', (req, res) => {
   });
 });
 
-app.get('/device-info', (req, res) => {
-  const user_agent = req.header('User-Agent');
-
-  res.send({ user_agent });
-});
+app.use('/device-info');
 
 app.get('/user-address', (req, res) => {
-  const ip = req.headers['x-forwarded-for'] ||
-  req.socket.remoteAddress ||
-  null;
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || null;
   res.send({ ip });
 });
 
