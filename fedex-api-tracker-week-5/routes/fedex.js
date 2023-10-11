@@ -1,5 +1,5 @@
 import express from 'express';
-import { getTrackingInfo } from '../controller/getTrackingInfo';
+import { getTrackingInfo } from '../controller/index.js';
 
 /**
  * Validates if the tracking number is valid.
@@ -19,7 +19,7 @@ export const fedexAPI = (axiosInstance) => {
   const fedApi = express.Router();
 
   /**
-   * GET /track
+   * GET /fedex/track
    * Fetches tracking information for a given tracking number.
    * Query Params:
    *  - trackingNumber: The tracking number to look up.
@@ -31,7 +31,7 @@ export const fedexAPI = (axiosInstance) => {
 
   /**
    * @swagger
-   * /track:
+   * /fedex/track:
    *   get:
    *     summary: Fetches tracking information for a given tracking number.
    *     tags: [Tracking]

@@ -63,7 +63,7 @@ npm start
 
 ```
 
-**The application will start running at http://localhost:3000**
+**The application will start running at https://localhost:3000**
 
 ## API Endpoints
 
@@ -73,7 +73,9 @@ npm start
 
 ## Swagger Documentation
 
-**API documentation is available at http://localhost:3000/api-docs**
+**API documentation is available at https://localhost:3000/api-docs**
+
+![Swagger UI](./assets/images/swagger-ui.png)
 
 ## Contributing
 

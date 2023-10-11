@@ -2,6 +2,8 @@ import express from 'express';
 import https from 'https';
 import fs from 'fs';
 import dotenv from 'dotenv';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocs from './swaggerConfig.js';
 
 dotenv.config();
 
@@ -29,6 +31,7 @@ app.use('/alive', alive);
 app.use('/device_info', device_info);
 app.use('/user', user);
 app.use('/fedex', fedexAPI(axiosInstance));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // GET Route with custom headers
 
