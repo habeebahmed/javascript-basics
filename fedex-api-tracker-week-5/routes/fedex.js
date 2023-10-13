@@ -50,8 +50,8 @@ export const fedexAPI = (axiosInstance) => {
    *       500:
    *         description: Internal Server Error.
    */
-  fedApi.get('/track', async (req, res) => {
-    const trackingNumber = req.query?.trackingNumber;
+  fedApi.post('/track', async (req, res) => {
+    const trackingNumber = req.body?.trackingNumber;
     console.log('In track ', trackingNumber);
 
     try {
