@@ -32,37 +32,24 @@ export const fedexAPI = (axiosInstance) => {
   /**
    * @swagger
    * /fedex/track:
-   *   post:
+   *   get:
    *     summary: Fetches tracking information for a given tracking number.
    *     tags: [Tracking]
-   *     requestBody:
-   *       required: true
-   *       content:
-   *         application/json:
-   *           schema:
-   *             type: object
-   *             properties:
-   *               trackingNumber:
-   *                 type: string
-   *                 description: The tracking number to look up.
+   *     parameters:
+   *       - in: query
+   *         name: trackingNumber
+   *         schema:
+   *           type: string
+   *         required: true
+   *         description: The tracking number to look up.
    *     responses:
    *       200:
    *         description: Returns tracking information.
-   *         content:
-   *           application/json:
-   *             schema:
-   *               type: object
-   *               properties:
-   *                 msg:
-   *                   type: string
-   *                 otherFields:
-   *                   type: object
    *       400:
    *         description: Invalid tracking number.
    *       500:
    *         description: Internal Server Error.
    */
-
   fedApi.post('/track', async (req, res) => {
     const trackingNumber = req.body?.trackingNumber;
     console.log('In track ', trackingNumber);
